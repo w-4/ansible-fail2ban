@@ -1,16 +1,15 @@
-## Ansibles - fail2ban [![Build Status](https://travis-ci.org/Ansibles/fail2ban.png)](https://travis-ci.org/Ansibles/fail2ban)
+## fail2ban [![Build Status](https://travis-ci.org/Oefenweb/ansible-fail2ban.svg?branch=master)](https://travis-ci.org/Oefenweb/ansible-fail2ban)
 
-Ansible role which installs and configures fail2ban, a utility that watches logs for failed login attempts and blocks repeat offenders with firewall rules.
+Set up fail2ban in Debian-like systems.
 
+#### Requirements
 
-#### Requirements & Dependencies
-- Tested on Ansible 1.4 or higher.
-
+None
 
 #### Variables
 
 - `fail2ban_loglevel` - sets the loglevel output (1 = ERROR, 2 = WARN, 3 = INFO, 4 = DEBUG; default is 3)
-- `fail2ban_logtarget1` - set the log target. This could be a file, SYSLOG, STDERR or STDOUT
+- `fail2ban_logtarget` - set the log target. This could be a file, SYSLOG, STDERR or STDOUT
 - `fail2ban_syslog_target`
 - `fail2ban_syslog_facility`
 - `fail2ban_socket` - sets the socket file, which is used to communicate with the daemon
@@ -30,25 +29,38 @@ For each of the services you wish to protect/put a jail or ban up for, you need 
 
 ```yaml
 fail2ban_services:
-  - name: "ssh"
-    enabled: "true"
-    port: "ssh"
-    filter: "sshd"
-    logpath: "/var/log/auth.log"
+  - name: ssh
+    enabled: true
+    port: ssh
+    filter: sshd
+    logpath: /var/log/auth.log
     maxretry: 6
-    protocol: "tcp"                     (optional)
-    action: "action_ "                  (optional)
-    banaction: "iptables-multiport"     (optional)
+    protocol: tcp                 (optional)
+    action: action_               (optional)
+    banaction: iptables-multiport (optional)
 ```
 
-There's a list of [service examples](services_examples.md) to help you.
+## Dependencies
 
+None
+
+#### Example
+
+```yaml
+---
+- hosts: all
+  roles:
+  - fail2ban
+```
 
 #### License
 
-Licensed under the MIT License. See the LICENSE file for details.
+MIT
 
+#### Author Information
+
+Mischa ter Smitten (based on work of Ansibles)
 
 #### Feedback, bug-reports, requests, ...
 
-Are [welcome](https://github.com/ansibles/fail2ban/issues)!
+Are [welcome](https://github.com/Oefenweb/ansible-fail2ban/issues)!
