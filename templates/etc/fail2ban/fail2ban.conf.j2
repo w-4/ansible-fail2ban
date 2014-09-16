@@ -37,3 +37,10 @@ syslog-facility = {{ fail2ban_syslog_facility }}
 # Values: FILE  Default:  /var/run/fail2ban/fail2ban.sock
 #
 socket = {{ fail2ban_socket }}
+
+# Option: pidfile
+# Notes.: Set the PID file. This is used to store the process ID of the
+#         fail2ban server.
+# Values: [ FILE ]  Default: /var/run/fail2ban/fail2ban.pid
+#
+pidfile = {{ fail2ban_pidfile }}
