@@ -15,7 +15,7 @@ None
 - `fail2ban_socket`: [default: `/var/run/fail2ban/fail2ban.sock`]: Sets the socket file, which is used to communicate with the daemon
 - `fail2ban_pidfile`: [default: `/var/run/fail2ban/fail2ban.pid`]: Sets the pid file, which is used to to store the process ID of the daemon (Only works on `fail2ban >= 0.8.9`)
 
-- `fail2ban_ignoreip`: [default: `[127.0.0.1/8]`]: Which IP address/CIDR mask/DNS host should be ignored from fail2ban's actions
+- `fail2ban_ignoreips`: [default: `[127.0.0.1/8]`]: Which IP address/CIDR mask/DNS host should be ignored from fail2ban's actions
 - `fail2ban_bantime`: [default: `600`]: Sets the bantime
 - `fail2ban_maxretry`: [default: `3`]: Maximum number of retries before the host is put into jail
 - `fail2ban_backend`: [default: `auto`]: Specifies the backend used to get files modification
