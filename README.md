@@ -28,6 +28,8 @@ None
 - `fail2ban_chain`: [default: `INPUT`]: Specifies the chain where jumps would need to be added in iptables-* actions
 - `fail2ban_action`: [default: `action_`]: Default action
 
+- `fail2ban_filterd_paths`: [default: []]: Paths to directories containing filters to copy
+
 For each of the services you wish to protect/put a jail or ban up for, you need to add it to the `fail2ban_services` list of hashes:
 
 ```yaml
@@ -48,6 +50,8 @@ fail2ban_services:
     logpath: /var/log/apache2/access.log
     maxretry: 5
     findtime: 120
+fail2ban_filterd_paths:
+  etc/fail2ban/filter.d/
 ```
 
 ## Dependencies
