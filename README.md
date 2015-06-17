@@ -41,6 +41,13 @@ fail2ban_services:
     protocol: tcp                 (optional)
     action: action_               (optional)
     banaction: iptables-multiport (optional)
+  - name: apache-wordpress-logins
+    enabled: true
+    port: http,https
+    filter: apache-wordpress-logins
+    logpath: /var/log/apache2/access.log
+    maxretry: 5
+    findtime: 120
 ```
 
 ## Dependencies
