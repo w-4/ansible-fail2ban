@@ -28,7 +28,7 @@ None
 - `fail2ban_chain`: [default: `INPUT`]: Specifies the chain where jumps would need to be added in iptables-* actions
 - `fail2ban_action`: [default: `action_`]: Default action
 
-- `fail2ban_filterd_path`: [optional]: Path to directory containing filters to copy
+- `fail2ban_filterd_path`: [optional]: Path to directory containing filters to copy (**note the trailing slash**)
 
 For each of the services you wish to protect/put a jail or ban up for, you need to add it to the `fail2ban_services` list of hashes:
 
@@ -49,27 +49,27 @@ fail2ban_services:
 
 None
 
-#### Example
+#### Example(s)
+
+##### Simple configuration
 
 ```yaml
 ---
 - hosts: all
   roles:
-  - fail2ban
+    - fail2ban
 ```
 
-Example with filter path:
+##### Add custom filters (from outside the role)
 
 ```yaml
 ---
 - hosts: all
   roles:
-  - fail2ban
+    - fail2ban
   vars:
-  - fail2ban_filterd_path: etc/fail2ban/filter.d/
+    - fail2ban_filterd_path: ../../../files/fail2ban/etc/fail2ban/filter.d/
 ```
-
-
 
 #### License
 
