@@ -28,12 +28,12 @@
 
 - name: copy filters
   copy:
-    src: "{{ item }}"
+    src: "{{ fail2ban_filterd_path }}"
     dest: /etc/fail2ban/filter.d/
     owner: root
     group: root
     mode: 0644
-  with_items: fail2ban_filterd_paths
+  when: fail2ban_filterd_path is defined
   tags: [configuration, fail2ban, fail2ban-filters]
 
 - name: start and enable service

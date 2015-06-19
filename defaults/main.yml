@@ -19,8 +19,6 @@ fail2ban_protocol: tcp
 fail2ban_chain: INPUT
 fail2ban_action: action_
 
-fail2ban_filterd_paths: []
-
 fail2ban_services:
   - name: ssh
     enabled: true
