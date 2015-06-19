@@ -68,7 +68,15 @@ None
   roles:
     - fail2ban
   vars:
-    - fail2ban_filterd_path: ../../../files/fail2ban/etc/fail2ban/filter.d/
+    fail2ban_filterd_path: ../../../files/fail2ban/etc/fail2ban/filter.d/
+    fail2ban_services:
+      - name: apache-wordpress-logins
+        enabled: true
+        port: http,https
+        filter: apache-wordpress-logins
+        logpath: /var/log/apache2/access.log
+        maxretry: 5
+        findtime: 120
 ```
 
 #### License
