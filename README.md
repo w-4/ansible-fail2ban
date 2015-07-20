@@ -20,6 +20,7 @@ None
 - `fail2ban_ignoreips`: [default: `[127.0.0.1/8]`]: Which IP address/CIDR mask/DNS host should be ignored from fail2ban's actions
 - `fail2ban_bantime`: [default: `600`]: Sets the bantime
 - `fail2ban_maxretry`: [default: `3`]: Maximum number of retries before the host is put into jail
+- `fail2ban_findtime`: [default: `600`]: A host is banned if it has generated `fail2ban_maxretry` during the last `fail2ban_findtime` (can be overriden on a per role basis)
 - `fail2ban_backend`: [default: `auto`]: Specifies the backend used to get files modification
 - `fail2ban_email`: [default: `root@localhost`]: Email address which can be used in the interpolation of the `fail2ban_services`
 - `fail2ban_banaction`: [default: `iptables-multiport`]: Sets the global/default banaction (can be overriden on a per role basis)
@@ -43,6 +44,7 @@ fail2ban_services:
     protocol: tcp                 (optional)
     action: action_               (optional)
     banaction: iptables-multiport (optional)
+    findtime: 600                 (optional)
 ```
 
 ## Dependencies

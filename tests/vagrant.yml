@@ -4,4 +4,4 @@
   remote_user: vagrant
   sudo: true
   roles:
-    - fail2ban
+    - ansible-fail2ban

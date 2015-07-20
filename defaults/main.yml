@@ -11,6 +11,7 @@ fail2ban_ignoreips:
  - 127.0.0.1/8
 fail2ban_bantime: 600
 fail2ban_maxretry: 3
+fail2ban_findtime: 600
 fail2ban_backend: auto
 fail2ban_destemail: root@localhost
 fail2ban_banaction: iptables-multiport
@@ -26,3 +27,4 @@ fail2ban_services:
     filter: sshd
     logpath: /var/log/auth.log
     maxretry: 6
+    findtime: 600
