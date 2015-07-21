@@ -87,7 +87,7 @@ MIT
 
 #### Author Information
 
-Mischa ter Smitten (based on work of Ansibles)
+Mischa ter Smitten (based on work of [ANXS](https://github.com/ANXS))
 
 #### Feedback, bug-reports, requests, ...
 

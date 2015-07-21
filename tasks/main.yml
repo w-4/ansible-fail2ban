@@ -1,5 +1,5 @@
----
 # tasks file for fail2ban
+---
 - name: install
   apt:
     name: fail2ban
