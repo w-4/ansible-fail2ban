@@ -44,6 +44,7 @@ fail2ban_services:
     protocol: tcp                 (optional)
     action: action_               (optional)
     banaction: iptables-multiport (optional)
+    bantime: 600                  (optional)
     findtime: 600                 (optional)
 ```
 
