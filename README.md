@@ -30,6 +30,8 @@ None
 - `fail2ban_action`: [default: `action_`]: Default action
 
 - `fail2ban_filterd_path`: [optional]: Path to directory containing filters to copy (**note the trailing slash**)
+- `fail2ban_actiond_path`: [optional]: Path to directory containing actions to copy (**note the trailing slash**)
+- `fail2ban_jaild_path`: [optional]: Path to directory containing jails to copy (**note the trailing slash**)
 
 For each of the services you wish to protect/put a jail or ban up for, you need to add it to the `fail2ban_services` list of hashes:
 
