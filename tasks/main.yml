@@ -12,10 +12,10 @@
     - fail2ban
     - fail2ban-install
 
-- name: update configuration file - /etc/fail2ban/fail2ban.conf
+- name: update configuration file - /etc/fail2ban/fail2ban.local
   template:
-    src: etc/fail2ban/fail2ban.conf.j2
-    dest: /etc/fail2ban/fail2ban.conf
+    src: etc/fail2ban/fail2ban.local.j2
+    dest: /etc/fail2ban/fail2ban.local
     owner: root
     group: root
     mode: 0644
