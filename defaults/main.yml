@@ -1,6 +1,6 @@
 # defaults file for fail2ban
 ---
-fail2ban_loglevel: 3
+fail2ban_loglevel: INFO
 fail2ban_logtarget: /var/log/fail2ban.log
 fail2ban_syslog_target: /var/log/fail2ban.log
 fail2ban_syslog_facility: 1
