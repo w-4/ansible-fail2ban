@@ -27,7 +27,7 @@ None
 - `fail2ban_mta`: [default: `sendmail`]: Email action
 - `fail2ban_protocol`: [default: `tcp`]: Sets the default protocol
 - `fail2ban_chain`: [default: `INPUT`]: Specifies the chain where jumps would need to be added in iptables-* actions
-- `fail2ban_action`: [default: `action_`]: Default action
+- `fail2ban_action`: [default: `%(action_)s`]: Default action.  **Note that variables (including the actions defined elsewhere in the config files) must be wrapped in python-style `%(` and `)s` so they are expanded.**
 
 - `fail2ban_filterd_path`: [optional]: Path to directory containing filters to copy (**note the trailing slash**)
 - `fail2ban_actiond_path`: [optional]: Path to directory containing actions to copy (**note the trailing slash**)
@@ -44,7 +44,7 @@ fail2ban_services:
     logpath: /var/log/auth.log
     maxretry: 6
     protocol: tcp                 (optional)
-    action: action_               (optional)
+    action: %(action_)s           (optional)
     banaction: iptables-multiport (optional)
     bantime: 600                  (optional)
     findtime: 600                 (optional)
