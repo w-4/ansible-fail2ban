@@ -24,10 +24,6 @@ ignoreip = {{ fail2ban_ignoreips | join(' ') }}
 bantime  = {{ fail2ban_bantime }}
 maxretry = {{ fail2ban_maxretry }}
 findtime = {{ fail2ban_findtime }}
-sendername = {{ fail2ban_sendername }}
-{% if fail2ban_sender is defined %}
-sender = {{ fail2ban_sender }}
-{% endif %}
 
 # "backend" specifies the backend used to get files modification. Available
 # options are "gamin", "polling" and "auto".
@@ -39,6 +35,14 @@ backend = {{ fail2ban_backend }}
 # Destination email address used solely for the interpolations in
 # jail.{conf,local} configuration files.
 destemail = {{ fail2ban_destemail }}
+
+#
+# Sender name and email address used solely for the interpolations in
+# jail.{conf,local} configuration files.
+sendername = {{ fail2ban_sendername }}
+{% if fail2ban_sender is defined %}
+sender = {{ fail2ban_sender }}
+{% endif %}
 
 #
 # ACTIONS
