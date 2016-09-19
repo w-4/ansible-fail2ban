@@ -10,6 +10,7 @@ None
 
 #### Variables
 
+- `fail2ban_install_state`: [default: `latest`]: apt state of fail2ban package (latest, present)
 - `fail2ban_loglevel`: [default: `INFO`]: Sets the loglevel output (CRITICAL, ERROR, WARNING, NOTICE, INFO, DEBUG)
 - `fail2ban_logtarget`: [default: `/var/log/fail2ban.log`]: Sets the log target. This could be a file, SYSLOG, STDERR or STDOUT
 - `fail2ban_syslog_target`: [default: `/var/log/fail2ban.log`]:
