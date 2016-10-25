@@ -37,6 +37,14 @@ backend = {{ fail2ban_backend }}
 destemail = {{ fail2ban_destemail }}
 
 #
+# Sender name and email address used solely for the interpolations in
+# jail.{conf,local} configuration files.
+sendername = {{ fail2ban_sendername }}
+{% if fail2ban_sender is defined %}
+sender = {{ fail2ban_sender }}
+{% endif %}
+
+#
 # ACTIONS
 #
 
