@@ -83,7 +83,7 @@ action_mwl = %(banaction)s[name=%(__name__)s, port="%(port)s", protocol="%(proto
 # Choose default action.  To change, just override value of 'action' with the
 # interpolation to the chosen action shortcut (e.g.  action_mw, action_mwl, etc) in jail.local
 # globally (section [DEFAULT]) or per specific section
-action = %({{ fail2ban_action }})s
+action = {{ fail2ban_action }}
 
 #
 # JAILS
@@ -119,7 +119,7 @@ findtime = {{ service.findtime }}
 bantime = {{ service.bantime }}
 {% endif %}
 {% if service.action is defined %}
-action = %({{ service.action }})s
+action = {{ service.action }}
 {% endif %}
 {% if service.banaction is defined %}
 banaction = {{ service.banaction }}
