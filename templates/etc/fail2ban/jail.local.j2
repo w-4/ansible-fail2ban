@@ -104,11 +104,19 @@ action = {{ fail2ban_action }}
 
 {% for service in fail2ban_services %}
 [{{ service.name }}]
-enabled = {{ 'true' if service.enabled else 'false' }}
+enabled = {{ service.enabled | default('true') | bool | lower }}
+{% if service.port is defined %}
 port = {{ service.port }}
+{% endif %}
+{% if service.filter is defined %}
 filter = {{ service.filter }}
+{% endif %}
+{% if service.logpath is defined %}
 logpath = {{ service.logpath }}
+{% endif %}
+{% if service.maxretry is defined %}
 maxretry = {{ service.maxretry }}
+{% endif %}
 {% if service.protocol is defined %}
 protocol = {{ service.protocol }}
 {% endif %}
