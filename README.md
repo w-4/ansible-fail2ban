@@ -20,9 +20,9 @@ None
 - `fail2ban_ignoreips`: [default: `[127.0.0.1/8]`]: Which IP address/CIDR mask/DNS host should be ignored from fail2ban's actions
 - `fail2ban_bantime`: [default: `600`]: Sets the bantime
 - `fail2ban_maxretry`: [default: `3`]: Maximum number of retries before the host is put into jail
-- `fail2ban_findtime`: [default: `600`]: A host is banned if it has generated `fail2ban_maxretry` during the last `fail2ban_findtime` (this can be overriden for each service)
+- `fail2ban_findtime`: [default: `600`]: A host is banned if it has generated `fail2ban_maxretry` during the last `fail2ban_findtime`
 - `fail2ban_backend`: [default: `auto`]: Specifies the backend used to get files modification
-- `fail2ban_banaction`: [default: `iptables-multiport`]: Sets the global/default banaction (can be overriden on a per role basis)
+- `fail2ban_banaction`: [default: `iptables-multiport`]: Sets the global/default banaction
 - `fail2ban_mta`: [default: `sendmail`]: Email action
 - `fail2ban_protocol`: [default: `tcp`]: Sets the default protocol
 - `fail2ban_chain`: [default: `INPUT`]: Specifies the chain where jumps would need to be added in iptables-* actions
@@ -33,22 +33,18 @@ None
 - `fail2ban_actiond_path`: [optional]: Path to directory containing actions to copy (**note the trailing slash**)
 - `fail2ban_jaild_path`: [optional]: Path to directory containing jails to copy (**note the trailing slash**)
 
-For each of the services you wish to protect/put a jail or ban up for, you need to add it to the `fail2ban_services` list of hashes:
-
-```yaml
-fail2ban_services:
-  - name: ssh
-    enabled: true
-    port: ssh
-    filter: sshd
-    logpath: /var/log/auth.log
-    maxretry: 6
-    protocol: tcp                 (optional)
-    action: %(action_)s           (optional)
-    banaction: iptables-multiport (optional)
-    bantime: 600                  (optional)
-    findtime: 600                 (optional)
-```
+- `fail2ban_services` [default see `defaults/main.yml`]: Service definitions
+- `fail2ban_services.{n}.name` [required]: Service name (e.g. `ssh`)
+- `fail2ban_services.{n}.enabled` [default: `true`]: Whether or not enabled
+- `fail2ban_services.{n}.port` [optional]: Sets the port
+- `fail2ban_services.{n}.filter` [optional]: Name of the filter to be used by the jail to detect matches. Each single match by a filter increments the counter within the jail
+- `fail2ban_services.{n}.logpath` [optional]: Path to the log file which is provided to the filter
+- `fail2ban_services.{n}.maxretry` [optional]: Maximum number of retries before the host is put into jail
+- `fail2ban_services.{n}.protocol` [optional]: Sets the protocol
+- `fail2ban_services.{n}.findtime` [optional]: The counter is set to zero if no match is found within `findtime` seconds
+- `fail2ban_services.{n}.bantime` [optional]: Duration (in seconds) for IP to be banned for. Negative number for `permanent` ban
+- `fail2ban_services.{n}.action` [optional]: Sets the action
+- `fail2ban_services.{n}.banaction` [optional]: Sets the banaction
 
 ## Dependencies
 
@@ -56,13 +52,29 @@ None
 
 #### Example(s)
 
-##### Simple configuration
+##### Simple
 
 ```yaml
 ---
 - hosts: all
   roles:
     - fail2ban
+```
+
+##### Enable sshd filter (with non-default settings)
+
+```yaml
+---
+- hosts: all
+  roles:
+    - fail2ban
+  vars:
+  - name: ssh
+    port: 2222
+    filter: sshd
+    logpath: /var/log/auth.log
+    maxretry: 5
+    bantime: -1
 ```
 
 ##### Add custom filters (from outside the role)
@@ -76,7 +88,6 @@ None
     fail2ban_filterd_path: ../../../files/fail2ban/etc/fail2ban/filter.d/
     fail2ban_services:
       - name: apache-wordpress-logins
-        enabled: true
         port: http,https
         filter: apache-wordpress-logins
         logpath: /var/log/apache2/access.log

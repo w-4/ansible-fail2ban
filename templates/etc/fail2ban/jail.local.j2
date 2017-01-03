@@ -104,7 +104,7 @@ action = {{ fail2ban_action }}
 
 {% for service in fail2ban_services %}
 [{{ service.name }}]
-enabled = {{ service.enabled | default('true') | bool | lower }}
+enabled = {{ service.enabled | default(true) | bool | to_json }}
 {% if service.port is defined %}
 port = {{ service.port }}
 {% endif %}
