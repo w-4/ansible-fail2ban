@@ -69,10 +69,8 @@ None
   roles:
     - fail2ban
   vars:
-  - name: ssh
+  - name: sshd
     port: 2222
-    filter: sshd
-    logpath: /var/log/auth.log
     maxretry: 5
     bantime: -1
 ```
