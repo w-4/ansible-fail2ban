@@ -1,6 +1,6 @@
 ## fail2ban
 
-[![Build Status](https://travis-ci.org/Oefenweb/ansible-fail2ban.svg?branch=master)](https://travis-ci.org/Oefenweb/ansible-fail2ban) [![Ansible Galaxy](http://img.shields.io/badge/ansible--galaxy-fail2ban-blue.svg)](https://galaxy.ansible.com/list#/roles/1435)
+[![Build Status](https://travis-ci.org/Oefenweb/ansible-fail2ban.svg?branch=master)](https://travis-ci.org/Oefenweb/ansible-fail2ban) [![Ansible Galaxy](http://img.shields.io/badge/ansible--galaxy-fail2ban-blue.svg)](https://galaxy.ansible.com/tersmitten/fail2ban)
 
 Set up fail2ban in Debian-like systems.
 
@@ -36,15 +36,8 @@ None
 - `fail2ban_services` [default see `defaults/main.yml`]: Service definitions
 - `fail2ban_services.{n}.name` [required]: Service name (e.g. `ssh`)
 - `fail2ban_services.{n}.enabled` [default: `true`]: Whether or not enabled
-- `fail2ban_services.{n}.port` [optional]: Sets the port
-- `fail2ban_services.{n}.filter` [optional]: Name of the filter to be used by the jail to detect matches. Each single match by a filter increments the counter within the jail
-- `fail2ban_services.{n}.logpath` [optional]: Path to the log file which is provided to the filter
-- `fail2ban_services.{n}.maxretry` [optional]: Maximum number of retries before the host is put into jail
-- `fail2ban_services.{n}.protocol` [optional]: Sets the protocol
-- `fail2ban_services.{n}.findtime` [optional]: The counter is set to zero if no match is found within `findtime` seconds
-- `fail2ban_services.{n}.bantime` [optional]: Duration (in seconds) for IP to be banned for. Negative number for `permanent` ban
-- `fail2ban_services.{n}.action` [optional]: Sets the action
-- `fail2ban_services.{n}.banaction` [optional]: Sets the banaction
+- `fail2ban_services.{n}.*` [optional]: Name of the option
+- `fail2ban_services.{n}.*.*` [optional]: Value of the option
 
 ## Dependencies
 
@@ -69,10 +62,12 @@ None
   roles:
     - fail2ban
   vars:
-  - name: sshd
-    port: 2222
-    maxretry: 5
-    bantime: -1
+    fail2ban_services:
+      # In Ubuntu 16.04 this is sshd
+      - name: ssh
+        port: 2222
+        maxretry: 5
+        bantime: -1
 ```
 
 ##### Add custom filters (from outside the role)
