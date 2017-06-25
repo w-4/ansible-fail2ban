@@ -1,14 +1,14 @@
-## fail2ban
+# fail2ban
 
 [![Build Status](https://travis-ci.org/Oefenweb/ansible-fail2ban.svg?branch=master)](https://travis-ci.org/Oefenweb/ansible-fail2ban) [![Ansible Galaxy](http://img.shields.io/badge/ansible--galaxy-fail2ban-blue.svg)](https://galaxy.ansible.com/tersmitten/fail2ban)
 
 Set up fail2ban in Debian-like systems.
 
-#### Requirements
+## Requirements
 
 None
 
-#### Variables
+## Variables
 
 - `fail2ban_loglevel`: [default: `3`, or `INFO` in Ubuntu 16.04]: Sets the loglevel output (e.g. `1 = ERROR`, `2 = WARN`, `3 = INFO`, `4 = DEBUG`)
 - `fail2ban_logtarget`: [default: `/var/log/fail2ban.log`]: Sets the log target. This could be a file, SYSLOG, STDERR or STDOUT
@@ -43,9 +43,9 @@ None
 
 None
 
-#### Example(s)
+## Example(s)
 
-##### Simple
+### Simple
 
 ```yaml
 ---
@@ -54,7 +54,7 @@ None
     - fail2ban
 ```
 
-##### Enable sshd filter (with non-default settings)
+### Enable sshd filter (with non-default settings)
 
 ```yaml
 ---
@@ -70,7 +70,7 @@ None
         bantime: -1
 ```
 
-##### Add custom filters (from outside the role)
+### Add custom filters (from outside the role)
 
 ```yaml
 ---
@@ -88,14 +88,14 @@ None
         findtime: 120
 ```
 
-#### License
+## License
 
 MIT
 
-#### Author Information
+## Author Information
 
 Mischa ter Smitten (based on work of [ANXS](https://github.com/ANXS))
 
-#### Feedback, bug-reports, requests, ...
+## Feedback, bug-reports, requests, ...
 
 Are [welcome](https://github.com/Oefenweb/ansible-fail2ban/issues)!
