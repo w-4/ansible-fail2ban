@@ -63,7 +63,7 @@ None
     - fail2ban
   vars:
     fail2ban_services:
-      # In Ubuntu 16.04 or Debian 9.0 this is sshd
+      # In older versions of Fail2Ban this is called ssh
       - name: sshd
         port: 2222
         maxretry: 5
