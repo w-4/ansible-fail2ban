@@ -6,6 +6,7 @@ fail2ban_syslog_target: /var/log/fail2ban.log
 fail2ban_syslog_facility: 1
 fail2ban_socket: /var/run/fail2ban/fail2ban.sock
 fail2ban_pidfile: /var/run/fail2ban/fail2ban.pid
+fail2ban_dbpurgeage: 86400
 
 fail2ban_sendername: 'Fail2ban'
 
