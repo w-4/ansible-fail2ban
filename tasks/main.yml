@@ -44,9 +44,8 @@
     owner: root
     group: root
     mode: 0644
-  with_fileglob:
-    - "{{ fail2ban_filterd_path }}/*.j2"
-  when: fail2ban_filterd_path is defined
+  with_items: "{{ fail2ban_filters }}"
+  when: fail2ban_filters is defined
   notify: restart fail2ban
   tags:
     - configuration
@@ -60,9 +59,8 @@
     owner: root
     group: root
     mode: 0644
-  with_fileglob:
-    - "{{ fail2ban_actiond_path }}/*.j2"
-  when: fail2ban_actiond_path is defined
+  with_items: "{{ fail2ban_actions }}"
+  when: fail2ban_actions is defined
   notify: restart fail2ban
   tags:
     - configuration
@@ -76,9 +74,8 @@
     owner: root
     group: root
     mode: 0644
-  with_fileglob:
-    - "{{ fail2ban_jaild_path }}/*.j2"
-  when: fail2ban_jaild_path is defined
+  with_items: "{{ fail2ban_jails }}"
+  when: fail2ban_jails is defined
   notify: restart fail2ban
   tags:
     - configuration
