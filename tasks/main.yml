@@ -11,6 +11,12 @@
     - fail2ban
     - fail2ban-install
 
+- name: remove debian default jail defaults-debian.conf
+  file:
+    state: absent
+    path: /etc/fail2ban/jail.d/defaults-debian.conf
+  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+  
 - name: update configuration file - /etc/fail2ban/fail2ban.local
   template:
     src: etc/fail2ban/fail2ban.local.j2
