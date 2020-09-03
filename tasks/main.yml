@@ -11,11 +11,17 @@
     - fail2ban
     - fail2ban-install
 
-- name: remove debian default jail defaults-debian.conf
+- name: remove configuration file - /etc/fail2ban/jail.d/defaults-debian.conf
   file:
     state: absent
     path: /etc/fail2ban/jail.d/defaults-debian.conf
-  
+  notify: restart fail2ban
+  tags:
+    - configuration
+    - fail2ban
+    - fail2ban-configuration
+    - fail2ban-configuration-delete
+
 - name: update configuration file - /etc/fail2ban/fail2ban.local
   template:
     src: etc/fail2ban/fail2ban.local.j2
@@ -28,6 +34,7 @@
     - configuration
     - fail2ban
     - fail2ban-configuration
+    - fail2ban-configuration-update
 
 - name: update configuration file - /etc/fail2ban/jail.local
   template:
@@ -41,6 +48,7 @@
     - configuration
     - fail2ban
     - fail2ban-configuration
+    - fail2ban-configuration-update
 
 - name: copy filters
   copy:
