@@ -19,6 +19,7 @@ fail2ban_findtime: 600
 fail2ban_backend: auto
 fail2ban_destemail: root@localhost
 fail2ban_banaction: iptables-multiport
+fail2ban_banaction_allports: iptables-allports
 fail2ban_mta: sendmail
 fail2ban_protocol: tcp
 fail2ban_chain: INPUT

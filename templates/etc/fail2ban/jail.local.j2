@@ -40,6 +40,7 @@ sender = {{ fail2ban_sender }}
 # action_* variables. Can be overridden globally or per
 # section within jail.local file
 banaction = {{ fail2ban_banaction }}
+banaction_allports = {{ fail2ban_banaction_allports }}
 
 # email action. Since 0.8.1 upstream fail2ban uses sendmail
 # MTA for the mailing. Change mta configuration parameter to mail
