@@ -11,8 +11,8 @@ fail2ban_dbpurgeage: 86400
 fail2ban_sendername: 'Fail2ban'
 
 fail2ban_ignoreips:
- - 127.0.0.1/8
- - ::1
+  - 127.0.0.1/8
+  - ::1
 fail2ban_bantime: 600
 fail2ban_maxretry: 3
 fail2ban_findtime: 600
