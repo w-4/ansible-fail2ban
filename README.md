@@ -1,6 +1,7 @@
 # fail2ban
 
-[![Build Status](https://travis-ci.org/Oefenweb/ansible-fail2ban.svg?branch=master)](https://travis-ci.org/Oefenweb/ansible-fail2ban) [![Ansible Galaxy](http://img.shields.io/badge/ansible--galaxy-fail2ban-blue.svg)](https://galaxy.ansible.com/Oefenweb/fail2ban)
+[![CI](https://github.com/Oefenweb/ansible-fail2ban/workflows/CI/badge.svg)](https://github.com/Oefenweb/ansible-fail2ban/actions?query=workflow%3ACI)
+[![Ansible Galaxy](http://img.shields.io/badge/ansible--galaxy-fail2ban-blue.svg)](https://galaxy.ansible.com/Oefenweb/fail2ban)
 
 Set up fail2ban in Debian-like systems.
 
