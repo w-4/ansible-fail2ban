@@ -1,6 +1,7 @@
-# meta file for fail2ban
+# meta file
 ---
 galaxy_info:
+  namespace: oefenweb
   role_name: fail2ban
   author: Mischa ter Smitten
   company: Oefenweb.nl B.V.

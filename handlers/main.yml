@@ -1,4 +1,4 @@
-# handlers file for fail2ban
+# handlers file
 ---
 - name: restart fail2ban
   service:
