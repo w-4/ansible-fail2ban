@@ -48,7 +48,7 @@ Options for version >= 0.11.1
 - `fail2ban_bantime_formula`: [default: `ban.Time * (1<<(ban.Count if ban.Count<20 else 20)) * banFactor`]: Formula that will be used to calculate the increased bantime. **Note that you can either use bantime_formula or bantime_multipliers while bantime_multipliers takes precedence.**
 - `fail2ban_bantime_overalljails`: [default: `false`]: Ban IPs for all jails if multiple are defined.
 - `fail2ban_bantime_rndtime`: [optional]: Option for smart bots that try to access after the bantime immediately.
-- `fail2ban_bantime_multipliers`: [optional]: Multiplier to use instead of bantime_formula. For example 1 2 4 8 16 32 64. **Note for bantime = 600 and bantime_factor=1 this would be 600*1*1, 600*1*2...**
+- `fail2ban_bantime_multipliers`: [optional]: Multiplier to use instead of bantime_formula. For example 1 2 4 8 16 32 64. **Note for bantime = 600 and bantime_factor=1 this would be `600*1*1, 600*1*2...`**
 
 
 
