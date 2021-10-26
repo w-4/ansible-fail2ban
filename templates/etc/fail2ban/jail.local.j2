@@ -2,10 +2,27 @@
 
 # Fail2Ban local configuration file.
 # Overrides changes in the main jail file, /etc/fail2ban/jail.conf
-# Use this file to change local settings. 
+# Use this file to change local settings.
 
 [DEFAULT]
 
+{% if fail2ban_version is version('0.11.1', '>=') %}
+bantime.increment = {{ fail2ban_bantime_increment | lower }}
+{% if fail2ban_bantime_rndtime is defined %}
+bantime.rndtime = {{ fail2ban_bantime_rndtime }}
+{% endif %}
+{% if fail2ban_bantime_rndtime is defined %}
+bantime.maxtime = {{ fail2ban_bantime_maxtime }}
+{% endif %}
+bantime.factor = {{ fail2ban_bantime_factor }}
+{% if fail2ban_bantime_multipliers is not defined %}
+bantime.formula = {{ fail2ban_bantime_formula }}
+{% endif %}
+{% if fail2ban_bantime_multipliers is defined %}
+bantime.multipliers = {{ fail2ban_bantime_multipliers }}
+{% endif %}
+bantime.overalljails = {{ fail2ban_bantime_overalljails | lower }}
+{% endif %}
 # "ignoreip" can be an IP address, a CIDR mask or a DNS host
 ignoreip = {{ fail2ban_ignoreips | join(' ') }}
 bantime  = {{ fail2ban_bantime }}

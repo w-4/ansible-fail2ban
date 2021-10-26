@@ -11,6 +11,17 @@
     - fail2ban
     - fail2ban-install
 
+- name: get fail2ban version
+  ansible.builtin.command:
+    cmd: fail2ban-server -V
+  changed_when: false
+  register: fail2ban_version_raw
+
+- name: register fail2ban version
+  ansible.builtin.set_fact:
+    fail2ban_version: "{{ fail2ban_version_raw.stdout | regex_search('\\d{1,2}\\.\\d{2}\\.\\d{1,2}') }}"
+  changed_when: false
+
 - name: remove configuration file - /etc/fail2ban/jail.d/defaults-debian.conf
   file:
     state: absent
