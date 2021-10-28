@@ -11,7 +11,7 @@ bantime.increment = {{ fail2ban_bantime_increment | lower }}
 {% if fail2ban_bantime_rndtime is defined %}
 bantime.rndtime = {{ fail2ban_bantime_rndtime }}
 {% endif %}
-{% if fail2ban_bantime_rndtime is defined %}
+{% if fail2ban_bantime_maxtime is defined %}
 bantime.maxtime = {{ fail2ban_bantime_maxtime }}
 {% endif %}
 bantime.factor = {{ fail2ban_bantime_factor }}
