@@ -13,7 +13,13 @@ fail2ban_sendername: 'Fail2ban'
 fail2ban_ignoreips:
   - 127.0.0.1/8
   - ::1
+
 fail2ban_bantime: 600
+fail2ban_bantime_increment: true
+fail2ban_bantime_factor: 1
+fail2ban_bantime_formula: 'ban.Time * (1<<(ban.Count if ban.Count<20 else 20)) * banFactor'
+fail2ban_bantime_overalljails: false
+
 fail2ban_maxretry: 3
 fail2ban_findtime: 600
 fail2ban_backend: auto
