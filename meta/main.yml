@@ -22,5 +22,3 @@ galaxy_info:
     - system
     - networking
 dependencies: []
-collections:
-  - ansible.builtin
